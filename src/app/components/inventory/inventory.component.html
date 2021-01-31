@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="text-danger" *ngIf="errorMessage">
+    <h3>{{errorMessage}}</h3>
+  </div>
+  <table class="table" *ngIf="products">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </tr>
+    <tr *ngFor="let product of products">
+      <td>{{product.id}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.quantity}}</td>
+      <td *ngIf="isAdmin || isProductManager">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="onDeleteProduct(product.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
